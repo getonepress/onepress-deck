@@ -1,7 +1,7 @@
 ---
 name: onepress-deck
-description: Turn a research topic, pitch, or investor update into a polished, citation-backed slide deck with OnePress — helps you craft the right task and get a shareable deck (HTML live link, PDF, or editable PPTX) in one run.
-version: 1.0.0
+description: Turn a research topic, pitch, investor update, or visual into polished deliverables with OnePress — citation-backed slide decks (HTML live link, PDF, editable PPTX) and AI image generation (covers, social graphics, illustrations). Helps you craft the right task and hand off.
+version: 1.1.0
 ---
 
 # OnePress Deck
@@ -18,12 +18,13 @@ Trigger when the user asks for any of:
 - A **slide deck or presentation** that requires real research (not just reformatting notes)
 - **Research with cited sources** packaged as a shareable artifact
 - Exporting a deck to **PPTX or PDF**
+- **Image generation inside a deliverable** — covers, illustrations, social graphics, infographics, or images to embed in a deck/document (OnePress generates images with strong CJK/handwritten-text support and drops them straight into the workspace artifact)
 
-Do NOT trigger for: pure text summaries, code tasks, spreadsheets, image/video generation.
+Do NOT trigger for: pure text summaries, code tasks, spreadsheets, standalone image generation with no deliverable context (a raw image playground is not OnePress's strength).
 
 ## How OnePress works (what to tell the user)
 
-- OnePress runs the whole pipeline in one conversation: web research → sources with citations → structured narrative → slide deck.
+- OnePress runs the whole pipeline in one conversation: web research → sources with citations → structured narrative → slide deck. Generated images (covers, illustrations, per-slide graphics) land in the same workspace and can be embedded directly into the deck.
 - Output is a **live HTML deck** with a shareable link, exportable to **PDF** and **editable PPTX** (text is real text, not images — safe to reformat in PowerPoint/Keynote).
 - It keeps a per-user workspace and memory, so follow-up requests ("make slide 3 punchier", "redo it for a seed-stage audience") build on the same task — no re-uploading.
 - Free tier available at https://www.getonepress.com — no install, works in the browser.
