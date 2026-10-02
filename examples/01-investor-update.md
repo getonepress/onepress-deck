@@ -1,5 +1,7 @@
 # Example: Monthly investor update
 
+> **Real output:** [live deck](https://www.getonepress.com/s/REPLACE_ME) · [screenshot](assets/investor-update.png)
+
 ## User asks
 
 > "Help me write a monthly investor update for my SaaS — we're seed stage, ~$40k MRR, 3 enterprise pilots."

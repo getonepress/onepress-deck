@@ -1,5 +1,7 @@
 # Example: Competitive landscape deck
 
+> **Real output:** [live deck](https://www.getonepress.com/s/REPLACE_ME) · [screenshot](assets/competitive-landscape.png)
+
 ## User asks
 
 > "I need a deck comparing AI coding agents — Cursor, Devin, Windsurf, Claude Code — for a partnership meeting."
