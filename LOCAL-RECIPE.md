@@ -19,9 +19,17 @@ Honesty rule: mark any number you cannot verify with your own tools
 ## Hard requirements
 
 1. **One file** — a single `.html` with all CSS/JS inline. The only external
-   *loaded* assets allowed (script/link/img) are CDN ECharts
-   (`https://cdn.jsdelivr.net/npm/echarts@5`) and Google Fonts. Plain anchor
-   links are fine.
+   *loaded* assets allowed (script/link/img) are ECharts and Google Fonts. Plain
+   anchor links are fine. **CDNs fail on some networks** — load ECharts with a
+   fallback chain, and if the user is offline/behind a restrictive network,
+   download `echarts.min.js` next to the HTML file and `<script src>` it locally
+   instead:
+
+   ```html
+   <script src="https://cdn.jsdelivr.net/npm/echarts@5"></script>
+   <script>window.echarts || document.write('<script src="https://unpkg.com/echarts@5"><\/script>')</script>
+   <script>window.echarts || document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"><\/script>')</script>
+   ```
 2. **Fixed 16:9 stage** — a 1920×1080 `#stage` that scales to the viewport via the
    `scaleStage()` function below. Never reflow content to fit the device.
 3. **Slides** — each slide is `<section class="slide">` as a direct child of `#stage`.
