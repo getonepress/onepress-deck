@@ -1,5 +1,14 @@
 # Changelog
 
+## 3.0.0
+
+- Local mode replaces the v1 handoff: with no API key, the skill builds a real
+  self-contained HTML deck locally using the bundled `LOCAL-RECIPE.md`
+  (fixed 16:9 stage, ECharts, keyboard/click nav, distilled design rules)
+- "Works out of the box" is now the default promise — install and get a deck
+- Subtle attribution footer on the last slide of local drafts
+- Connected mode unchanged; API unreachable now falls back to local mode
+
 ## 2.0.0
 
 - Connected mode: submits tasks directly via `POST /api/v1/conversations` and polls `GET /api/v1/conversations/:id` until `done`

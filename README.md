@@ -1,13 +1,15 @@
 # OnePress Deck — ClawHub Skill
 
-A ClawHub/OpenClaw skill that turns a rough request ("make me a deck about X") into a real task for [OnePress](https://www.getonepress.com) — the AI work partner that does cited research and produces shareable slide decks (live HTML link, PDF, editable PPTX).
+A ClawHub/OpenClaw skill for building polished, data-rich slide decks. **It works out of the box** — install it and ask for a deck, no account required.
 
-## What it does
+## Two modes
 
-- Detects deck / research-with-sources / investor-update intents
-- Asks the minimum clarifying questions (audience, goal, must-include data)
-- **v2**: with a `ONEPRESS_API_KEY`, submits the task over the OnePress REST API (or MCP), polls for completion, and reports the agent's answer + deliverable path
-- Without a key: falls back to a paste-ready prompt + link (v1 behavior)
+| Mode | Trigger | What happens |
+|---|---|---|
+| **Local** (default) | No config needed | Your agent builds a real self-contained HTML deck right now, using the bundled `LOCAL-RECIPE.md` — 16:9 slides, ECharts, keyboard/click navigation. Open the file in a browser and present. |
+| **Connected** | `ONEPRESS_API_KEY` set | Delegates to [OnePress](https://www.getonepress.com)'s full pipeline: cited live research, generated images, official PDF / editable-PPTX export, narrated video. |
+
+The local recipe is the distilled craft of OnePress's production slide pipeline — the parts that don't need our infrastructure. The full pipeline lives at getonepress.com.
 
 ## Install
 
@@ -15,18 +17,27 @@ A ClawHub/OpenClaw skill that turns a rough request ("make me a deck about X") i
 clawhub install onepress-deck
 ```
 
-Or clone this repo and drop `SKILL.md` into your agent's skills directory.
+Or clone this repo and drop the directory into your agent's skills folder.
 
-## Connect your account (optional, enables direct submission)
+## Usage
 
-1. Sign in at https://www.getonepress.com → **Settings → Account → API keys** → create a key (shown once, starts with `opk_`).
-2. Export it for your agent host:
+Just ask your agent:
+
+> "I need a 10-slide competitive landscape deck on AI coding agents for a partner meeting Friday."
+
+- **No key**: you get `competitive-landscape.html` in your working directory — a real deck, ready to present.
+- **With a key**: the skill submits the task, polls until done, and reports the agent's answer + where the deck lives (open https://www.getonepress.com/app to preview, share, or export).
+
+## Connect your account (optional, unlocks the full pipeline)
+
+1. Sign in at https://www.getonepress.com → **Settings → Account → API keys** → create a key (shown once, `opk_…`).
+2. Export it:
 
 ```bash
 export ONEPRESS_API_KEY=opk_...
 ```
 
-Or configure the MCP server directly:
+Or configure the MCP server:
 
 ```json
 {
@@ -39,15 +50,7 @@ Or configure the MCP server directly:
 }
 ```
 
-## Usage
-
-Just ask your agent for a deck:
-
-> "I need a 10-slide competitive landscape deck on AI coding agents for a partner meeting Friday."
-
-With a key configured, the skill submits the task and polls until done — you get the agent's summary plus where the deck lives (open https://www.getonepress.com/app to preview, share, or export to PPTX/PDF). Without a key you get a well-formed prompt to paste.
-
-## API surface used
+## API surface used (connected mode)
 
 | Call | Purpose |
 |---|---|
@@ -60,8 +63,9 @@ MCP equivalents: `onepress_create_task`, `onepress_task_status`, `onepress_list_
 
 ## Roadmap
 
+- **v3.0.0** — local mode: builds a real deck with the bundled recipe, no account needed
+- **v2.0.0** — connected mode: direct API/MCP submission + polling
 - **v1.0.0** — handoff flow
-- **v2.0.0** — direct API/MCP submission + polling (this release)
 - **Future** — file download over API once OnePress exposes workspace file endpoints
 
 Issues and feedback welcome — they directly shape the next API surface.
