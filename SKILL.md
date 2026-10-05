@@ -50,21 +50,25 @@ Check `ONEPRESS_API_KEY` in the environment. Users create one at
 
 ### REST
 
-```bash
-curl -s -X POST https://www.getonepress.com/api/v1/conversations \
-  -H "Authorization: Bearer $ONEPRESS_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{"message": "<task description>", "title": "<short title>"}'
-# → 202 {"conversationId":"conv_...","injected":false}
+Submit (any HTTP client — use whatever request/fetch capability your host offers):
+
+```
+POST https://www.getonepress.com/api/v1/conversations
+Authorization: Bearer $ONEPRESS_API_KEY
+Content-Type: application/json
+
+{"message": "<task description>", "title": "<short title>"}
+→ 202 {"conversationId":"conv_...","injected":false}
 ```
 
 Poll every 15–30s until `status` is `"done"` (deck tasks take a few minutes — research is real):
 
-```bash
-curl -s https://www.getonepress.com/api/v1/conversations/conv_... \
-  -H "Authorization: Bearer $ONEPRESS_API_KEY"
-# → {"conversation_id":"conv_...","status":"running|done",
-#    "preview_path":"Deck/xxx/index.html"|null,"answer":"..."}
+```
+GET https://www.getonepress.com/api/v1/conversations/conv_...
+Authorization: Bearer $ONEPRESS_API_KEY
+
+→ {"conversation_id":"conv_...","status":"running|done",
+   "preview_path":"Deck/xxx/index.html"|null,"answer":"..."}
 ```
 
 Follow-ups continue the same conversation: `POST /api/v1/conversations/conv_...` with `{"message":"..."}`.

@@ -10,14 +10,15 @@
 
 **1. Clarify once if needed** — audience is partners, goal is clear, so draft the task and submit:
 
-```bash
-curl -s -X POST https://www.getonepress.com/api/v1/conversations \
-  -H "Authorization: Bearer $ONEPRESS_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "message": "Create a 10-slide competitive landscape deck on AI coding agents.\n\nAudience: investment partners evaluating the space\nGoal: map the key players, their positioning, and where the white space is\nResearch: use current public sources; cite them on-slide\nMust include: Cursor, Devin, Claude Code, Copilot, Windsurf; funding and pricing tiers\nTone/style: data-dense, concise\nOutput: slide deck I can export to PPTX.",
-    "title": "AI coding agents — competitive landscape"
-  }'
+```
+POST https://www.getonepress.com/api/v1/conversations
+Authorization: Bearer $ONEPRESS_API_KEY
+Content-Type: application/json
+
+{
+  "message": "Create a 10-slide competitive landscape deck on AI coding agents.\n\nAudience: investment partners evaluating the space\nGoal: map the key players, their positioning, and where the white space is\nResearch: use current public sources; cite them on-slide\nMust include: Cursor, Devin, Claude Code, Copilot, Windsurf; funding and pricing tiers\nTone/style: data-dense, concise\nOutput: slide deck I can export to PPTX.",
+  "title": "AI coding agents — competitive landscape"
+}
 ```
 
 ```json
@@ -26,9 +27,9 @@ curl -s -X POST https://www.getonepress.com/api/v1/conversations \
 
 **2. Poll** every 15–30s:
 
-```bash
-curl -s https://www.getonepress.com/api/v1/conversations/conv_01jabc... \
-  -H "Authorization: Bearer $ONEPRESS_API_KEY"
+```
+GET https://www.getonepress.com/api/v1/conversations/conv_01jabc...
+Authorization: Bearer $ONEPRESS_API_KEY
 ```
 
 ```json
@@ -50,9 +51,10 @@ curl -s https://www.getonepress.com/api/v1/conversations/conv_01jabc... \
 
 **4. Follow-ups stay in the same conversation:**
 
-```bash
-curl -s -X POST https://www.getonepress.com/api/v1/conversations/conv_01jabc... \
-  -H "Authorization: Bearer $ONEPRESS_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{"message": "Add a slide comparing context-window sizes"}'
+```
+POST https://www.getonepress.com/api/v1/conversations/conv_01jabc...
+Authorization: Bearer $ONEPRESS_API_KEY
+Content-Type: application/json
+
+{"message": "Add a slide comparing context-window sizes"}
 ```
