@@ -110,6 +110,26 @@ Authorization: Bearer $ONEPRESS_API_KEY
 Follow-ups continue the same conversation: `POST /api/v1/conversations/conv_...` with `{"message":"..."}`.
 List tasks: `GET /api/v1/conversations?limit=20`.
 
+**Local files the task needs** (a logo, a data file, a draft deck): upload first,
+then reference the returned workspace path in the task message:
+
+```
+POST https://www.getonepress.com/api/v1/files?name=report.pdf&dir=Uploads
+Authorization: Bearer $ONEPRESS_API_KEY
+Content-Type: application/octet-stream
+
+<raw file bytes>          # `dir` optional, default "Uploads"
+
+→ 201 {"path":"Uploads/report.pdf","name":"report.pdf","size":1234}
+```
+
+(A `multipart/form-data` body with a `file` field + optional `dir` field also
+works, but only when the request carries a matching `Origin` — server-side
+agents should use the raw-bytes form above.)
+
+Then e.g. `{"message": "Use the brand assets I uploaded at Uploads/logo.png …"}`.
+Max 50MB; images are content-screened on upload. Personal workspace only.
+
 When `status` is `"done"` and `preview_path` is set, download the finished
 artifact and save it to the user's working directory:
 
@@ -118,6 +138,14 @@ GET https://www.getonepress.com/api/v1/conversations/conv_.../artifact
 Authorization: Bearer $ONEPRESS_API_KEY
 
 → file bytes (HTML/PDF/etc.), Content-Disposition: attachment
+```
+
+If the task produced files but `preview_path` is null (rare — e.g. the only
+output was a plain file), download it by workspace path instead:
+
+```
+GET https://www.getonepress.com/api/v1/files?path=Uploads/report.pdf
+Authorization: Bearer $ONEPRESS_API_KEY
 ```
 
 ### MCP
@@ -133,7 +161,9 @@ Authorization: Bearer $ONEPRESS_API_KEY
 }
 ```
 
-Tools: `onepress_create_task`, `onepress_task_status`, `onepress_list_tasks`.
+Tools: `onepress_create_task`, `onepress_task_status`, `onepress_list_tasks`,
+`onepress_upload_file` (base64), `onepress_download_artifact` (base64, ≤ ~20MB —
+larger files via REST).
 
 ### Report back
 
