@@ -1,6 +1,8 @@
 # Example: Connected mode (ONEPRESS_API_KEY)
 
-> Prerequisites: `ONEPRESS_API_KEY` is set (user created it at getonepress.com → Settings → Account → API keys).
+> Prerequisites: `ONEPRESS_API_KEY` is set — obtained via the pairing flow
+> (`POST /api/connect`, browser-confirmed; see SKILL.md) or created manually at
+> getonepress.com → Settings → Account → API keys.
 
 ## User asks
 

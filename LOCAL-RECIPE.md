@@ -5,8 +5,11 @@ deck** entirely locally — no OnePress account needed. It is the distilled craf
 OnePress's production slide pipeline, minus the parts that need our infrastructure
 (live deep research, image generation, narrated video, official PDF/PPTX export).
 
-Follow it exactly. The output is a single `.html` file the user opens in a browser:
-arrow keys / click to navigate, 16:9 at any window size.
+The **hard requirements** below are the delivery contract — follow them exactly.
+The **design principles** are craft guidance, not a fixed template: choose the
+structure and visual language that fit the topic. The output is a single `.html`
+file the user opens in a browser: arrow keys / click to navigate, 16:9 at any
+window size.
 
 ## When local mode applies
 
@@ -38,10 +41,14 @@ Honesty rule: mark any number you cannot verify with your own tools
 4. **Chrome** — the `.slide-progress` and `.slide-counter` divs are **siblings of
    `#stage`, never inside it** (they must not scale with the stage). The nav
    script wires them up.
-5. **Show, don't tell** — no text-only walls. Data slides must have ECharts charts.
-   Use big numbers, grids, comparison layouts. Chart containers need fixed pixel
-   size (e.g. `width:900px; height:480px`) — the stage never reflows, so
-   `width/height:100%` inside an un-sized parent collapses to zero.
+5. **Fit the visual to the content** — use charts when reliable data genuinely
+   improves comparison, trend, or scale comprehension; otherwise prefer
+   timelines, diagrams, scenes, images, or typographic rhythm. Never fabricate
+   data to justify a chart, and don't pad the deck with decoration that carries
+   no information — text-led slides are fine when the content calls for them.
+   Chart containers need fixed pixel size (e.g. `width:900px; height:480px`) —
+   the stage never reflows, so `width/height:100%` inside an un-sized parent
+   collapses to zero.
 
 ## Design principles (what separates a deck from AI slop)
 
@@ -50,8 +57,18 @@ Honesty rule: mark any number you cannot verify with your own tools
   ≥4.5:1 against the background.
 - **Palette**: one dominant color + sharp accent beats a timid even palette. Dark
   stage with warm accent is a safe default.
-- **Slide structure**: cover → problem/stakes → evidence (charts) →
-  narrative/comparison → ask/next steps. Each slide = one self-contained point.
+- **Structure follows the goal**: decide what the audience must do — understand,
+  believe, remember, or act — and let that choose the path. Persuasive decks
+  (investor, sales, board) lead with the claim and back it with evidence and
+  charts. Narrative decks (history, culture, product stories) move
+  chronologically, spatially, or thematically — scenes, timelines, and
+  annotated visuals usually beat statistics. Teaching decks build a mental
+  model with diagrams and worked examples. These are starting points, not
+  templates. Each slide = one self-contained point.
+- **Show the real thing**: when the topic is a specific work, document, or
+  product, present the actual material if the user provided it (embed images as
+  data URIs to keep the file self-contained). When it isn't available, say so —
+  don't imply a schematic is the original.
 - **Speaker notes**: when content is technical, add them as HTML comments per slide.
 - **Honesty marker**: for any unverified figure, use the literal string
   `not verified live` in a footnote — consistent phrasing across decks.
@@ -173,8 +190,9 @@ Skeleton:
 
 ## Workflow
 
-1. **Clarify once** if the brief is vague — audience, goal, slide count. Max 2
-   questions, each with a reason. Skip if intent is clear.
+1. **Clarify once only if the answer would change the outcome** — audience,
+   goal, or facts only the user has. Max 2 questions, each with a reason.
+   Otherwise state your assumptions and build.
 2. **Outline** slide-by-slide before writing HTML (one line each: what point, what
    visual).
 3. **Write the file** in the user's working directory with a descriptive name

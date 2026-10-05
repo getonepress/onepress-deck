@@ -1,5 +1,18 @@
 # Changelog
 
+## 3.1.0
+
+- Local recipe softened: hard requirements stay the contract (single file,
+  16:9 stage, nav boilerplate, honesty marker), while structure/visuals are now
+  conditional guidance — charts only where they aid comprehension, no forced
+  "problem → evidence → ask" business-report shape, text-led slides allowed
+- Broadened scope beyond investor/business decks: lessons, research briefings,
+  narrative and cultural presentations
+- New frictionless connect flow (`POST /api/connect` → browser confirm → poll →
+  `opk_` key) — user authorizes in the browser, no manual key copying
+- Connected mode can now download the finished artifact
+  (`GET /api/v1/conversations/:id/artifact`) and hand the file back locally
+
 ## 3.0.0
 
 - Local mode replaces the v1 handoff: with no API key, the skill builds a real
