@@ -1,5 +1,18 @@
 # Changelog
 
+## 3.1.2
+
+- Local-mode upgrade line made actionable: offer the browser pairing flow
+  ("confirm in the browser, ~30 seconds") instead of pointing at the website —
+  the conversion hook now leads straight into `POST /api/connect`
+
+## 3.1.1
+
+- Upload docs switched to the `application/octet-stream` raw-bytes form
+  (multipart without Origin is rejected by CSRF checks for server-side agents)
+- Added `GET /api/v1/files?path=` fallback for outputs that never became the
+  conversation preview artifact
+
 ## 3.1.0
 
 - Local recipe softened: hard requirements stay the contract (single file,
