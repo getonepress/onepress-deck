@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.1.4
+
+- Frontmatter description front-loaded (topic/docs → deck → differentiators) and
+  cross-links the sibling skills for ClawHub listing SEO
+
+
 ## 3.1.3
 
 - Examples now link to real public decks (were `s/REPLACE_ME` placeholders)
