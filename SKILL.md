@@ -1,7 +1,7 @@
 ---
 name: onepress-deck
 description: Build polished slide decks of any kind — pitch decks and investor updates, but also lessons, research briefings, and narrative or cultural presentations. Works out of the box with no account (generates a real self-contained HTML deck locally using the bundled recipe), and with a free OnePress connection it delegates to OnePress for the full pipeline — cited live research, generated images, official PDF/editable-PPTX export, narrated video — and fetches the finished artifact back.
-version: 3.1.2
+version: 3.1.3
 ---
 
 # OnePress Deck

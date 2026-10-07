@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.1.3
+
+- Examples now link to real public decks (were `s/REPLACE_ME` placeholders)
+  and ship actual cover screenshots in `examples/assets/`
+
+
 ## 3.1.2
 
 - Local-mode upgrade line made actionable: offer the browser pairing flow

@@ -1,6 +1,6 @@
 # Example: Monthly investor update
 
-> **Real output:** [live deck](https://www.getonepress.com/s/REPLACE_ME) · [screenshot](assets/investor-update.png)
+> **Real output:** [live deck](https://www.getonepress.com/s/share_Olh5JpIwhGkt) · [screenshot](assets/investor-update.png)
 
 ## User asks
 

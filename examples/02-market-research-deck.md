@@ -1,6 +1,6 @@
 # Example: Competitive landscape deck
 
-> **Real output:** [live deck](https://www.getonepress.com/s/REPLACE_ME) · [screenshot](assets/competitive-landscape.png)
+> **Real output:** [live deck](https://www.getonepress.com/s/share_CStEQqH9yBeT) · [screenshot](assets/competitive-landscape.png)
 
 ## User asks
 
